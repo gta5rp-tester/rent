@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pyinstaller pillow
+          pip install pyinstaller pillow PyQt5
 
       - name: Build EXE with PyInstaller
         run: |
@@ -32,10 +32,9 @@ jobs:
           choco install innosetup -y
 
       - name: Create installer with Inno Setup
-  shell: cmd
-  run: |
-    "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" installer_inno.iss
-
+        shell: cmd
+        run: |
+          "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" installer_inno.iss
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
